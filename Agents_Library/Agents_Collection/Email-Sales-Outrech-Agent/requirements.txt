@@ -1,0 +1,70 @@
+# =====================
+# LLM & LangChain
+# =====================
+tiktoken
+openai
+uvicorn
+
+# =====================
+# Environment & Config
+# =====================
+python-dotenv
+PyYAML
+
+# =====================
+# Google API
+# =====================
+google-api-python-client
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+httplib2
+
+# =====================
+# Timezone & Datetime
+# =====================
+pytz
+python-dateutil
+
+# =====================
+# Logging & Utilities
+# =====================
+requests
+tqdm
+colorama
+
+# =====================
+# FastAPI & Pydantic
+# =====================
+fastapi
+pydantic
+typing-extensions
+anyio
+sniffio
+h11
+
+# =====================
+# Utilities
+# =====================
+proto-plus
+packaging
+urllib3
+idna
+certifi
+charset-normalizer
+rsa
+six
+pyasn1
+pyasn1-modules
+cachetools
+uritemplate
+pyparsing
+exceptiongroup
+typing-inspection
+distro
+jiter
+
+# =====================
+# Windows Developer Helpers
+# =====================
+colorlog
