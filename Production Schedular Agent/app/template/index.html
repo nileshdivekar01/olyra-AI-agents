@@ -1,0 +1,168 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Production Scheduler</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- ✅ Markdown to HTML converter -->
+    <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
+    <style>
+      /* ✅ Extra styling for markdown tables */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+      th,
+      td {
+        border: 1px solid #d1d5db; /* Tailwind gray-300 */
+        padding: 0.5rem 0.75rem; /* px-3 py-2 */
+        text-align: left;
+      }
+      th {
+        background-color: #f3f4f6; /* Tailwind gray-100 */
+        font-weight: 600; /* font-semibold */
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 min-h-screen flex flex-col items-center p-6">
+    <h1 class="text-3xl font-bold mb-6">AI Production Scheduler</h1>
+
+    <!-- Upload PDF -->
+    <div class="bg-white shadow-lg rounded-xl w-full max-w-2xl p-6 mb-6">
+      <h2 class="text-xl font-semibold mb-3">Upload PDF</h2>
+      <input
+        type="file"
+        id="pdfFile"
+        accept="application/pdf"
+        class="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer focus:outline-none mb-3"
+      />
+      <button
+        onclick="uploadPDF()"
+        id="uploadBtn"
+        class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-green-700"
+      >
+        Upload PDF
+      </button>
+      <p id="uploadStatus" class="mt-2 text-sm"></p>
+    </div>
+
+    <!-- Query Input -->
+    <div class="bg-white shadow-lg rounded-xl w-full max-w-2xl p-6">
+      <textarea
+        id="query"
+        placeholder="Ask: Optimize high-priority bag orders this week"
+        rows="4"
+        class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+      ></textarea>
+      <button
+        onclick="generateSchedule()"
+        id="submitBtn"
+        class="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+      >
+        Generate Schedule
+      </button>
+    </div>
+
+    <!-- Results -->
+    <div id="results" class="mt-8 w-full max-w-3xl hidden">
+      <div class="bg-white shadow-lg rounded-xl p-6">
+        <h2 class="text-xl font-semibold mb-2">Optimized Plan</h2>
+        <div
+          id="optimizedPlan"
+          class="prose prose-sm max-w-none bg-gray-50 p-3 rounded overflow-x-auto"
+        ></div>
+
+        <!-- Draft Plan -->
+        <!-- <h2 class="text-xl font-semibold mt-4 mb-2">AI Draft Plan</h2>
+        <div id="draftPlan" class="prose prose-sm max-w-none text-gray-800"></div> -->
+
+        <!-- Explanation -->
+        <h2 class="text-xl font-semibold mt-4 mb-2">Explanation</h2>
+        <p id="explanation" class="text-gray-700"></p>
+      </div>
+    </div>
+
+    <script>
+      async function uploadPDF() {
+        const fileInput = document.getElementById("pdfFile");
+        const uploadBtn = document.getElementById("uploadBtn");
+        const statusText = document.getElementById("uploadStatus");
+
+        if (!fileInput.files.length) {
+          statusText.textContent = "⚠️ Please select a PDF file first.";
+          statusText.className = "text-red-600 text-sm mt-2";
+          return;
+        }
+
+        const formData = new FormData();
+        formData.append("file", fileInput.files[0]);
+
+        uploadBtn.innerText = "Uploading...";
+        uploadBtn.disabled = true;
+        statusText.textContent = "";
+
+        try {
+          const res = await fetch("https://56c9f8c40f84.ngrok-free.app/api/upload-pdf", {
+            method: "POST",
+            body: formData,
+          });
+
+          if (!res.ok) throw new Error("Upload failed");
+
+          const data = await res.json();
+          statusText.textContent = "✅ Upload successful!";
+          statusText.className = "text-green-600 text-sm mt-2";
+          console.log("Upload response:", data);
+        } catch (err) {
+          statusText.textContent = "❌ Upload failed: " + err.message;
+          statusText.className = "text-red-600 text-sm mt-2";
+        } finally {
+          uploadBtn.innerText = "Upload PDF";
+          uploadBtn.disabled = false;
+        }
+      }
+
+      async function generateSchedule() {
+        const query = document.getElementById("query").value;
+        const btn = document.getElementById("submitBtn");
+        const resultsDiv = document.getElementById("results");
+
+        btn.innerText = "Scheduling...";
+        btn.disabled = true;
+
+        try {
+          const res = await fetch("https://56c9f8c40f84.ngrok-free.app/api/schedule", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ query }),
+          });
+          const data = await res.json();
+
+          // ✅ Convert Markdown → HTML
+          const converter = new showdown.Converter({
+            tables: true,
+            simplifiedAutoLink: true,
+          });
+          const optimizedHtml = converter.makeHtml(data.optimized_plan || "");
+          const draftHtml = converter.makeHtml(data.draft_plan || "");
+
+          document.getElementById("optimizedPlan").innerHTML = optimizedHtml;
+          // document.getElementById("draftPlan").innerHTML = draftHtml;
+          document.getElementById("explanation").innerText =
+            data.explanation || "";
+
+          resultsDiv.classList.remove("hidden");
+        } catch (err) {
+          alert("Error: " + err.message);
+        } finally {
+          btn.innerText = "Generate Schedule";
+          btn.disabled = false;
+        }
+      }
+    </script>
+  </body>
+</html>
