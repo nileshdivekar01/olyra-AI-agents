@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Olyra's AI Agents</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ===== Header ===== -->
+    <header>
+        <div class="logo">Olyra's <span>AI Agents</span></div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#agents">Agents Collection</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#control">Control Panel</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ===== Hero Section ===== -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Empower Your Business with <span>Intelligent AI Agents</span></h1>
+            <p>At Olyra’s AI Agents, we create smart, reliable, and human-like AI solutions that transform your business
+                operations — from customer engagement to process optimization.</p>
+            <div class="hero-buttons">
+                <button id="exploreBtn">Explore Agents</button>
+                <button class="learnBtn">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Stats Section ===== -->
+    <section class="stats">
+        <div class="stat">
+            <h2>50+</h2>
+            <p>Businesses Empowered</p>
+        </div>
+        <div class="stat">
+            <h2>10K+</h2>
+            <p>Customer Queries Resolved</p>
+        </div>
+        <div class="stat">
+            <h2>99.9%</h2>
+            <p>Uptime & Reliability</p>
+        </div>
+    </section>
+
+
+
+
+    <!-- ===== New Grouped Agents Collection ===== -->
+    <section id="agents">
+        <h2>Our Agents Collection</h2>
+        <p>Choose from our intelligent agents designed to automate and optimize your workflows.</p>
+
+        <!-- Group tabs -->
+        <div class="group-tabs">
+            <button class="tab-btn active" data-group="support">Support & Knowledge</button>
+            <button class="tab-btn" data-group="sales">Sales & Marketing</button>
+            <button class="tab-btn" data-group="manufacturing">Manufacturing</button>
+            <button class="tab-btn" data-group="healthcare">Healthcare</button>
+            <button class="tab-btn" data-group="healthcare">Retail</button>
+            <button class="tab-btn" data-group="healthcare">Education & Training</button>
+        </div>
+
+        <div class="agents-container">
+
+            <!-- ==== Support & Knowledge ==== -->
+            <div class="agent-group" data-group="support">
+                <div class="agent-card" data-url="https://customer-support-frontend-rosy.vercel.app"
+                    data-page="customer_support_agent.html">
+                    <div class="icon-container"><i class="fas fa-headset"></i></div>
+                    <h3>Customer Support Agent</h3>
+                    <p>Deliver 24/7 instant, accurate, and human-like support to your customers.</p>
+                </div>
+
+                <div class="agent-card" data-url="https://knowledge-base-agent-url.example.com"
+                    data-page="knowledge_base_agent.html">
+                    <div class="icon-container"><i class="fas fa-book"></i></div>
+                    <h3>Knowledge Base Agent</h3>
+                    <p>Instantly surface answers from your docs, FAQs and internal wikis.</p>
+                </div>
+            </div>
+
+            <!-- ==== Sales & Marketing ==== -->
+            <div class="agent-group" data-group="sales" style="display:none;">
+                <div class="agent-card" data-url="https://your-marketing-automation-agent-url.com"
+                    data-page="marketing_agent.html">
+                    <div class="icon-container"><i class="fas fa-bullhorn"></i></div>
+                    <h3>Marketing Automation Agent</h3>
+                    <p>Launch campaigns, analyze performance, and drive customer engagement.</p>
+                </div>
+
+                <div class="agent-card" data-url="https://email-sales-agent-url.example.com"
+                    data-page="email_sales_agent.html">
+                    <div class="icon-container"><i class="fas fa-envelope"></i></div>
+                    <h3>Email Sales Agent</h3>
+                    <p>Personalised outbound sequences, follow-ups and conversion tracking.</p>
+                </div>
+            </div>
+
+            <!-- ==== Manufacturing ==== -->
+            <div class="agent-group" data-group="manufacturing" style="display:none;">
+                <div class="agent-card" data-url="https://your-production-scheduling-agent-url.com"
+                    data-page="production_agent.html">
+                    <div class="icon-container"><i class="fas fa-industry"></i></div>
+                    <h3>Production Scheduling Agent</h3>
+                    <p>Automate production workflows, schedule resources efficiently.</p>
+                </div>
+                <div class="agent-card" data-url="https://your-production-scheduling-agent-url.com"
+                    data-page="production_agent.html">
+                    <div class="icon-container"><i class="fas fa-industry"></i></div>
+                    <h3>AI Analytics Agent</h3>
+                    <p>Automate production workflows, schedule resources efficiently.</p>
+                </div>
+            </div>
+
+             <!-- ==== Healthcare ==== -->
+            <div class="agent-group" data-group="healthcare" style="display:none;">
+                <div class="agent-card" data-url="https://your-production-scheduling-agent-url.com"
+                    data-page="production_agent.html">
+                    <div class="icon-container"><i class="fas fa-industry"></i></div>
+                    <h3>Healthcare Agent</h3>
+                    <p>Automate production workflows, schedule resources efficiently.</p>
+                </div>
+            </div>
+
+             <!-- ==== Retail ==== -->
+            <div class="agent-group" data-group="healthcare" style="display:none;">
+                <div class="agent-card" data-url="https://your-production-scheduling-agent-url.com"
+                    data-page="production_agent.html">
+                    <div class="icon-container"><i class="fas fa-industry"></i></div>
+                    <h3>Healthcare Agent</h3>
+                    <p>Automate production workflows, schedule resources efficiently.</p>
+                </div>
+            </div>
+
+             <!-- ==== Education and Training ==== -->
+            <div class="agent-group" data-group="healthcare" style="display:none;">
+                <div class="agent-card" data-url="https://your-production-scheduling-agent-url.com"
+                    data-page="production_agent.html">
+                    <div class="icon-container"><i class="fas fa-industry"></i></div>
+                    <h3>Healthcare Agent</h3>
+                    <p>Automate production workflows, schedule resources efficiently.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ===== Pricing Section ===== -->
+    <section id="pricing">
+        <h2>Flexible Pricing Plans</h2>
+        <p>Whether you're a startup or an enterprise, we have plans tailored for your growth.</p>
+
+        <div class="pricing-plans">
+            <div class="plan">
+                <h3>Starter</h3>
+                <p>Perfect for individuals and small teams.</p>
+                <p><strong>$29/month</strong></p>
+                <button>Get Started</button>
+            </div>
+            <div class="plan popular">
+                <h3>Business</h3>
+                <p>Ideal for scaling businesses seeking automation.</p>
+                <p><strong>$99/month</strong></p>
+                <button>Choose Plan</button>
+            </div>
+            <div class="plan">
+                <h3>Enterprise</h3>
+                <p>Custom AI solutions built for your unique needs.</p>
+                <p><strong>Contact Us</strong></p>
+                <button>Contact Sales</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== About Section ===== -->
+    <section id="about">
+        <h2>About Olyra's AI Agents</h2>
+        <p>Olyra’s AI Agents is a cutting-edge AI agency building next-generation digital assistants for modern
+            businesses. We merge creativity, deep learning, and data-driven insights to redefine customer experience and
+            operational efficiency.</p>
+        <p>Our mission is simple — to help companies <strong>work smarter, grow faster,</strong> and achieve more
+            through intelligent automation.</p>
+    </section>
+
+    <!-- ===== Control Panel Section ===== -->
+    <section id="control">
+        <h2>Control Panel (Admin Templates)</h2>
+        <p>Manage and configure your AI agents with ease.</p>
+
+        <div class="templates">
+            <div class="template-card">
+                <h3>Customer Support Agent Template</h3>
+                <p>Configure chat logic, tone, and integrations.</p>
+            </div>
+            <div class="template-card">
+                <h3>Production Scheduling Agent Template</h3>
+                <p>Customize workflow logic and optimize scheduling.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Olyra's AI Agents. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

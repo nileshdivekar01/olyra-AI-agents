@@ -1,0 +1,511 @@
+/* ==== Global Reset ==== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  color: #1e293b;
+  background-color: #f8fafc;
+  overflow-x: hidden;
+}
+
+/* ==== Header ==== */
+header {
+  position: sticky;
+  top: 0;
+  background: rgba(17, 24, 39, 0.9);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.logo span {
+  color: #38bdf8;
+}
+
+nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+nav a:hover {
+  color: #38bdf8;
+}
+
+/* ==== Hero Section ==== */
+.hero {
+  background: linear-gradient(135deg, #1e3a8a, #2563eb, #38bdf8);
+  color: white;
+  text-align: center;
+  padding: 7rem 2rem;
+  background-size: 300% 300%;
+  animation: gradientMove 10s infinite alternate;
+}
+
+@keyframes gradientMove {
+  0% { background-position: left; }
+  100% { background-position: right; }
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  line-height: 1.3;
+}
+.hero h1 span {
+  color: #facc15;
+}
+
+.hero p {
+  margin: 1rem 0 2rem;
+  font-size: 1.1rem;
+  color: #f1f5f9;
+}
+
+.hero-buttons button {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: transform 0.3s, background-color 0.3s;
+}
+#exploreBtn {
+  background: #facc15;
+  color: #1f2937;
+}
+.learnBtn {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+}
+.hero-buttons button:hover {
+  transform: scale(1.05);
+}
+
+/* ==== Stats Section ==== */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  padding: 3rem 1rem;
+  text-align: center;
+  background: white;
+}
+.stat h2 {
+  color: #2563eb;
+  font-size: 2rem;
+}
+.stat p {
+  color: #475569;
+}
+
+/* ==== Agents Section ==== */
+#agents {
+  padding: 5rem 2rem;
+  text-align: center;
+}
+.agents-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.agent-card {
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.agent-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+.agent-card h3 {
+  color: #2563eb;
+  margin-bottom: 1rem;
+}
+
+/* ==== Responsive Agents Section ==== */
+/* ==== Animated Agent Cards ==== */
+.agent-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem 1.8rem;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.agent-card::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: linear-gradient(120deg, #2563eb, #38bdf8, #3b82f6, #60a5fa);
+  transform: translateX(-50%) translateY(-50%);
+  transition: all 0.6s ease;
+  opacity: 0;
+  z-index: 0;
+}
+
+.agent-card:hover::before {
+  opacity: 0.15;
+  top: 0;
+  left: 0;
+}
+
+.icon-container {
+  font-size: 2.8rem;
+  color: #2563eb;
+  margin-bottom: 1rem;
+  transition: transform 0.4s ease, color 0.3s ease;
+}
+
+.agent-card:hover .icon-container {
+  transform: scale(1.2) rotate(10deg);
+  color: #1d4ed8;
+}
+
+.agent-card h3 {
+  color: #1e3a8a;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.agent-card p {
+  color: #475569;
+  position: relative;
+  z-index: 1;
+}
+
+.agent-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(37, 99, 235, 0.15);
+}
+
+/* Animation CSS class */
+.agent-card {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.agent-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s ease;
+}
+
+
+
+/* ===============Per Agent Feedabck Services ================= */
+/* Floating Back Button */
+    .back-btn {
+      position: fixed;        
+      bottom: 25px;
+      right: 25px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 12px 22px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      z-index: 999;
+      animation: fadeInBottom 0.6s ease-in-out;
+    }
+
+    .back-btn:hover {
+      background: #1e3a8a;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeInBottom {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Feedback Section */
+    .feedback-section {
+      background: #f9fafb;
+      padding: 40px 20px;
+      margin: 40px auto;
+      border-radius: 12px;
+      max-width: 700px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+
+    .feedback-section h2 {
+      margin-bottom: 15px;
+      color: #1e3a8a;
+    }
+
+    .star-rating {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .star-rating input {
+      display: none;
+    }
+
+    .star-rating label {
+      font-size: 28px;
+      color: #ccc;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .star-rating input:checked~label,
+    .star-rating label:hover,
+    .star-rating label:hover~label {
+      color: #fbbf24;
+    }
+
+    .feedback-section textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      resize: none;
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
+
+    .feedback-section button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .feedback-section button:hover {
+      background: #1e3a8a;
+      transform: scale(1.03);
+    }
+
+    .feedback-message {
+      margin-top: 10px;
+      font-size: 15px;
+      color: #16a34a;
+      display: none;
+    }
+
+
+/* ==== Add styling for agent detail pages ==== */
+
+.agent-header {
+  background: linear-gradient(135deg, #2563eb, #38bdf8);
+  color: white;
+  text-align: center;
+  padding: 0rem 2rem 3rem;
+}
+
+.agent-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.agent-info, .agent-use-cases, .agent-how-to-use, .agent-prompts, .agent-demo {
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: auto;
+  background: white;
+  margin-top: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.agent-info h2,
+.agent-use-cases h2,
+.agent-how-to-use h2,
+.agent-prompts h2,
+.agent-demo h2 {
+  color: #2563eb;
+  margin-bottom: 1rem;
+}
+
+.prompt-box {
+  background: #f1f5f9;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: left;
+}
+.prompt-box p {
+  margin-bottom: 0.5rem;
+}
+
+
+
+
+/* ==== Pricing Section ==== */
+#pricing {
+  background: #eff6ff;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+.pricing-plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.plan {
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 5px 12px rgba(0,0,0,0.08);
+  padding: 2rem;
+  transition: transform 0.3s;
+}
+.plan.popular {
+  border: 2px solid #2563eb;
+}
+.plan:hover {
+  transform: scale(1.05);
+}
+.plan button {
+  margin-top: 1rem;
+  padding: 0.7rem 1.2rem;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.plan button:hover {
+  background: #1d4ed8;
+}
+
+/* ==== About Section ==== */
+#about {
+  padding: 5rem 2rem;
+  background: white;
+  text-align: center;
+}
+#about p {
+  max-width: 800px;
+  margin: 1rem auto;
+  color: #475569;
+}
+
+/* ==== Control Panel ==== */
+#control {
+  background: #f9fafb;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+.templates {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.template-card {
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+}
+.template-card h3 {
+  color: #2563eb;
+}
+
+/* ==== Footer ==== */
+footer {
+  background: #111827;
+  color: #9ca3af;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+/* ==== Responsive ==== */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+  }
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .stats {
+    flex-direction: column;
+  }
+}
+
+/* ---------- Group Tabs ---------- */
+.group-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0 1.5rem;
+  flex-wrap: wrap;
+}
+.tab-btn {
+  background: #e2e8f0;
+  color: #1e293b;
+  border: none;
+  padding: 1.6rem 8.2rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .3s;
+}
+.tab-btn.active,
+.tab-btn:hover {
+  background: #2563eb;
+  color: white;
+}
+
+/* ---------- Agent Group Wrapper ---------- */
+.agent-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+

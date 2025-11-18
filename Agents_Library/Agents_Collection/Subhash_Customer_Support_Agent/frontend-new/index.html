@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modular Customer Support Agent</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar">
+            <section class="sidebar-section">
+                <h2>Clear Old Vector Index</h2>
+                <div class="button-with-status">
+                    <button id="clearIndexBtn" class="action-btn">Clear old vector index</button>
+                    <div id="clearStatus" class="status"></div>
+                </div>
+            </section>
+
+            <section class="sidebar-section">
+                <h2>Upload PDFs</h2>
+                <label for="pdfUpload" class="action-btn-pdf">Choose Files</label>
+                <input type="file" id="pdfUpload" multiple accept=".pdf" class="file-input">
+                <div id="fileList" class="file-list">No file chosen</div>
+                <div class="button-with-spinner">
+                    <button id="processBtn" class="action-btn">Process</button>
+                    <div id="pdfSpinner" class="button-spinner" style="display: none;"></div>
+                    <div id="pdfStatus" class="status"></div>
+                </div>
+            </section>
+
+            <section class="sidebar-section">
+                <h2>Manage URLs</h2>
+                <button id="addUrlsBtn" class="action-btn">Add URLs</button>
+                <div id="urlList" class="file-list">No URLs added.</div>
+                <div class="button-with-spinner">
+                    <button id="processUrlBtn" class="action-btn">Process URLs</button>
+                    <div id="urlSpinner" class="button-spinner" style="display: none;"></div>
+                    <div id="urlStatus" class="status"></div>
+                </div>
+            </section>
+
+            <section class="sidebar-section">
+                <h2>User Prompt (Domain Instructions)</h2>
+                <textarea id="domainPrompt" rows="10" placeholder="Enter domain-specific instructions here (e.g., for medical clinic)..." class="input-field"></textarea>
+                <div class="button-with-spinner">
+                    <button id="doneBtn" class="action-btn">Done</button>
+                    <div id="doneSpinner" class="button-spinner" style="display: none;"></div>
+                    <div id="doneStatus" class="status"></div>
+                </div>
+            </section>
+        </div>
+
+        <div class="chat-container">
+            <h1 class="chat-header">Customer Support</h1>
+            <div class="chat-box" id="chatBox"></div>
+            <div class="chat-input-container">
+                <input type="text" id="chatInput" placeholder="Ask your question...">
+                <button id="sendBtn">Send</button>
+                <button id="newConversationBtn" class="action-btn">New Conversation</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="urlModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>Enter URLs</h3>
+            <textarea id="urlInput" rows="5" placeholder="Enter URLs, one per line..." class="input-field"></textarea>
+            <div class="modal-buttons">
+                <button id="saveUrlsBtn" class="action-btn">Save URLs</button>
+                <button id="cancelUrlsBtn" class="action-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

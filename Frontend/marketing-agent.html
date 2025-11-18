@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marketing Automation Agent | Olyra's AI Agents</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Floating Back Button */
+    .back-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 12px 22px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      z-index: 999;
+      animation: fadeInBottom 0.6s ease-in-out;
+    }
+
+    .back-btn:hover {
+      background: #1e3a8a;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeInBottom {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Feedback Section */
+    .feedback-section {
+      background: #f9fafb;
+      padding: 40px 20px;
+      margin: 40px auto;
+      border-radius: 12px;
+      max-width: 700px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+
+    .feedback-section h2 {
+      margin-bottom: 15px;
+      color: #1e3a8a;
+    }
+
+    .star-rating {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .star-rating input {
+      display: none;
+    }
+
+    .star-rating label {
+      font-size: 28px;
+      color: #ccc;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .star-rating input:checked~label,
+    .star-rating label:hover,
+    .star-rating label:hover~label {
+      color: #fbbf24;
+    }
+
+    .feedback-section textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      resize: none;
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
+
+    .feedback-section button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .feedback-section button:hover {
+      background: #1e3a8a;
+      transform: scale(1.03);
+    }
+
+    .feedback-message {
+      margin-top: 10px;
+      font-size: 15px;
+      color: #16a34a;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="agent-header">
+    <h1>📢 Marketing Automation Agent</h1>
+    <p>Boost your campaigns with AI-powered automation and analytics.</p>
+  </header>
+
+  <section class="agent-info">
+    <h2>About This Agent</h2>
+    <p>
+      The Marketing Automation Agent helps you create, manage, and analyze marketing campaigns.
+      It personalizes outreach, automates tasks, and gives you actionable insights to drive engagement.
+    </p>
+  </section>
+
+  <section class="agent-use-cases">
+    <h2>Where You Can Use It</h2>
+    <ul>
+      <li>Email and SMS marketing campaigns</li>
+      <li>Customer segmentation and personalization</li>
+      <li>Lead nurturing workflows</li>
+      <li>Campaign performance analytics</li>
+    </ul>
+  </section>
+
+  <section class="agent-how-to-use">
+    <h2>How to Use</h2>
+    <ol>
+      <li>Integrate your CRM or lead data.</li>
+      <li>Define your campaign goals and audience.</li>
+      <li>Use AI to generate content or messaging.</li>
+      <li>Track and optimize performance metrics.</li>
+    </ol>
+  </section>
+
+  <section class="agent-prompts">
+    <h2>Example Prompts</h2>
+    <div class="prompt-box">
+      <p><strong>Example 1:</strong> "Create a 3-day email campaign for a new product launch."</p>
+      <p><strong>Example 2:</strong> "Segment users who haven’t purchased in the last 30 days."</p>
+      <p><strong>Example 3:</strong> "Generate promotional content for Diwali offers."</p>
+    </div>
+  </section>
+
+  <section class="agent-demo">
+    <h2>Try the Live Marketing Agent</h2>
+    <iframe src="https://your-marketing-automation-agent-url.com" width="100%" height="600px"
+      style="border:none;border-radius:12px;">
+    </iframe>
+  </section>
+  <!-- Feedback Section -->
+  <section class="feedback-section">
+    <h2>💬 Share Your Feedback</h2>
+    <p>How was your experience with the Customer Support Agent?</p>
+
+    <div class="star-rating">
+      <input type="radio" id="star5" name="rating" value="5" />
+      <label for="star5">★</label>
+      <input type="radio" id="star4" name="rating" value="4" />
+      <label for="star4">★</label>
+      <input type="radio" id="star3" name="rating" value="3" />
+      <label for="star3">★</label>
+      <input type="radio" id="star2" name="rating" value="2" />
+      <label for="star2">★</label>
+      <input type="radio" id="star1" name="rating" value="1" />
+      <label for="star1">★</label>
+    </div>
+
+    <textarea id="feedbackText" rows="4" placeholder="Write your feedback here..."></textarea>
+    <button onclick="submitFeedback()">Submit Feedback</button>
+    <p class="feedback-message" id="feedbackMessage"> Thank you! Your feedback has been recorded.</p>
+  </section>
+
+
+
+  <!-- Floating Back Button -->
+  <button class="back-btn" onclick="window.location.href='index.html'">← Back to Main Page</button>
+
+  <script>
+    function submitFeedback() {
+      const feedback = document.getElementById('feedbackText').value;
+      const rating = document.querySelector('input[name="rating"]:checked')?.value;
+
+      if (!rating || !feedback.trim()) {
+        alert('Please provide both a rating and feedback.');
+        return;
+      }
+
+      // You can later connect this with a backend or Google Sheets API
+      console.log('Feedback submitted:', { rating, feedback });
+
+      document.getElementById('feedbackMessage').style.display = 'block';
+      document.getElementById('feedbackText').value = '';
+      document.querySelectorAll('input[name="rating"]').forEach(r => r.checked = false);
+    }
+  </script>
+
+
+  <footer>
+    <p>© 2025 Olyra's AI Agents | Marketing Automation Agent</p>
+  </footer>
+</body>
+
+</html>
